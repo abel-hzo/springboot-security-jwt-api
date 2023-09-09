@@ -29,7 +29,7 @@ public class JwtUtilService {
 
 //	private static final long JWT_TOKEN_VALIDITY = 1000 * 60 * 60 * (long) 1;       //1 hora   
 //	private static final long JWT_TOKEN_VALIDITY = 1000 * 60 * 60 * (long) 1 / 3;   //20min
-	private static final long JWT_TOKEN_VALIDITY = 1000 * 60 * 60 * (long) 1 / 60;  //5min
+	private static final long JWT_TOKEN_VALIDITY = 1000 * 60 * 60 * (long) 1 / 12;  //5min
 	
 	//Entre 12 para que sean 5 minutos.
 	public String extractUsername(String token) {
