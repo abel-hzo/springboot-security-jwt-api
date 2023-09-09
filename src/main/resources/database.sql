@@ -1,0 +1,26 @@
+CREATE TABLE IF NOT EXISTS users (
+	id_user BIGINT PRIMARY KEY,
+	username VARCHAR(100) NOT NULL UNIQUE,
+	password VARCHAR(100) NOT NULL,
+	email VARCHAR(100) NOT NULL,
+	birthday DATE NOT NULL,
+	photo BLOB,
+	created DATETIME NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS roles (
+	id_rol INT AUTO_INCREMENT PRIMARY KEY,
+	rol VARCHAR(10) NOT NULL 
+);
+
+INSERT INTO roles(rol) VALUES('GUEST'),('USER'),('ADMIN');
+
+CREATE TABLE IF NOT EXISTS users_roles (
+	id_user_rol BIGINT PRIMARY KEY,
+	id_user BIGINT NOT NULL,
+	id_rol INT NOT NULL,
+	created DATETIME NOT NULL,
+ 	CONSTRAINT fk_user FOREIGN KEY(id_user) REFERENCES users(id_user),
+	CONSTRAINT fk_rol FOREIGN KEY(id_rol) REFERENCES roles(id_rol)
+);
+

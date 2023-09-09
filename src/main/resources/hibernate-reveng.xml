@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering 
+        SYSTEM "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<type-mapping>
+		<sql-type jdbc-type="BIGINT" hibernate-type="java.lang.Long" />
+		<sql-type jdbc-type="BLOB" hibernate-type="byte[]" />
+		<sql-type jdbc-type="DATE" hibernate-type="java.time.LocalDate" />
+	</type-mapping>
+
+	<table-filter match-catalog="JWTDB" match-schema="INFORMATION_SCHEMA" match-name=".*" exclude="true" />
+
+	<table catalog="JWTDB" schema="PUBLIC" name="USERS" class="com.abelhzo.jwt.entities.User" >
+		<column name="id_user" property="idUser"></column>
+	</table>
+	<table catalog="JWTDB" schema="PUBLIC" name="ROLES" class="com.abelhzo.jwt.entities.Rol" >
+		<column name="id_rol" property="idRol"></column>	
+<!-- 		Para alcarar que constraint_name toma podemos consultar la tabla: -->
+<!-- 		SELECT * FROM INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE; -->
+		<foreign-key constraint-name="FK_ROL" >
+			<set exclude="true" />
+		</foreign-key>	
+	</table>
+	<table catalog="JWTDB" schema="PUBLIC" name="USERS_ROLES" class="com.abelhzo.jwt.entities.UserRol" />
+			
+</hibernate-reverse-engineering>
